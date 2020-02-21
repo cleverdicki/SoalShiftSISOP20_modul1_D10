@@ -151,7 +151,7 @@ Bagian (a) dari soal ini, diminta untuk melakukan download dari link yang disedi
 ```
 Bagian (b), diminta untuk membuat jadwal unutk menjalankan script pada waktu yang ditentukan. ```5 6-23/8 * * 0-5``` artinya adalah setiap 8 jam mulai dari pukul 6.05 sampai 24.00 setiap harinya dari hari Minggu sampai hari Jumat, ```bash /home/dicki/Praktikum/Praktikum1/Soal3.sh``` akan melakukan script sesuai dengan script yang sudah dibuat dan diletakkan di directory yang sudah diatur.
 ### Source Code (c)
-```console
+```
 grep "Location" wget.log > location.log
 readarray line < location.log
 for ((i=0; i<28; i++))
