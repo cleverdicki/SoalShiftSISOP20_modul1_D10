@@ -5,6 +5,30 @@ Clever Dicki Marpaung (05111840000116)
 Nodas Uziel Putra Serpara (05111840007007)
 
 ## Soal 1
+### Source code (1.a)
+```console
+awk -F "\t" '
+{for(n=21;n<=NF; ++n)a[$13]+=$n}
+END{for(i in a ) if (a[i]>0) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -1 
+```
+Pada nomor 1.a, diminta untuk menampilkan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
+sedikit.
+* untuk perintah ***awk -F "\t"*** melakukan separation antar kolum di Sample-SUperstore.tsv, karena pada setiap kolum dibedakan melalui tab (\t)
+* untuk perintah ***{for(n=21;n<=NF; ++n)a[$13]+=$n}*** 
+### Source code (1.b)
+```console
+awk -F "\t" '
+{for(n=21;n<=NF; ++n) if($13 == "Central") a[$11]+=$n}
+END{for(i in a ) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -2
+```
+
+### Source code (1.c)
+```console
+awk -F "\t" '
+{for(n=21;n<=NF; ++n) if($11 == "Texas" || $11 == "Illinois") a[$17]+=$n}
+END{for(i in a ) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -10
+```
+
 
 ## Soal 2
 ```console
