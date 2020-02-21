@@ -39,6 +39,7 @@ Pada bagian tersebut, bash script generate random password, dimana akan dilakuka
 Kemudian pada bagian (b), diminta untuk membuat judul file sesuai dengan argumen yang kita inputkan, maka pada bagian ```name="$(echo $* | awk -F "." '{print $1}')"``` berfungsi untuk memisahkan ekstensi file yang kita inputkan pada argumen.
 ### Source Code (b)&(c)
 ```console
+name="$(echo $* | awk -F "." '{print $1}')"
 hr=`date +"%H"`
 caps=({A..Z})
 nocaps=({a..z})
