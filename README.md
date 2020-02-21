@@ -14,13 +14,18 @@ END{for(i in a ) if (a[i]>0) print a[i], i  }' Sample-Superstore.tsv | sort -g |
 Pada nomor 1.a, diminta untuk menampilkan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
 sedikit.
 * untuk perintah ***awk -F "\t"*** melakukan separation antar kolum di Sample-SUperstore.tsv, karena pada setiap kolum dibedakan melalui tab (\t)
-* untuk perintah ***{for(n=21;n<=NF; ++n)a[$13]+=$n}*** 
+* untuk perintah ***{for(n=21;n<=NF; ++n)a[$13]+=$n}*** akan membuat looping pada kolum keuntungan (profit) agar dapat dijumlah berdasarkan bagian (region) mereka masing"
+* untuk perintah ***END{for(i in a ) if (a[i]>0) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -1*** untuk melakukan print jumlah tiap" bagian (region), lalu di sort mana yang paling sedikit, setelah itu menampilkan 1 region yang paling sedikit profitnya
+
 ### Source code (1.b)
 ```console
 awk -F "\t" '
 {for(n=21;n<=NF; ++n) if($13 == "Central") a[$11]+=$n}
 END{for(i in a ) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -2
 ```
+Pada nomor 1.b, diminta menampilkan 2 negara bagian (state) yang memiliki keuntungan (profit) paling
+sedikit berdasarkan hasil poin a.
+Perintahnya hampir sama seperti 1.a, yang membedakan adalah perintah ***if*** yang berguna untuk menghitung profit state pada region Central saja, lalu ***a[$11]+=$n*** untuk membuat looping penjumlahan profit berdasarkan state yang berada pada region Central, dan ***head -2*** untuk menampilkan 2 saja state yang profitnya paling sedikit
 
 ### Source code (1.c)
 ```console
@@ -28,7 +33,9 @@ awk -F "\t" '
 {for(n=21;n<=NF; ++n) if($11 == "Texas" || $11 == "Illinois") a[$17]+=$n}
 END{for(i in a ) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -10
 ```
-
+Pada nomor 1.c, diminta menampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling
+sedikit berdasarkan 2 negara bagian (state) hasil poin b.
+Perintahnya hampir sama seperti 1.b, yang membedakan adalah perintah ***if*** yang berguna untuk menghitung profit product pada state Texas dan Illinois saja, lalu ***a[$17]+=$n*** untuk membuat looping penjumlahan profit berdasarkan product yang berada pada state Texas dan Illionis, dan ***head -10*** untuk menampilkan 10 saja product yang profitnya paling sedikit
 
 ## Soal 2
 ```console
