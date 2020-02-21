@@ -27,6 +27,7 @@ title="$(echo "$name" | tr [A-Z] ["$big"-ZA-"$bigmin"] | tr [a-z] ["$small"-za-"
 printf %s ${array[@]::28} $'\n' >> "$title".txt
 ```
 Pada nomor 2 bagian (a), diminta untuk membuat sebuah script bash yang dapat menghasilkan password secara random sebanyak 28 karakter alphanumeric, bisa huruf kapital bisa tidak. Pada bagian berikut merupakan bash script untuk generate random password:
+### Source Code (a)
 ```console
 array=()
 for i in {a..z} {A..Z} {0..9};
@@ -36,6 +37,7 @@ done
 ```
 Pada bagian tersebut, bash script generate random password, dimana akan dilakukan looping untuk mendapatkan alphanumeric yang diinginkan (posisi dari huruf dan angka juga random).
 Kemudian pada bagian (b), diminta untuk membuat judul file sesuai dengan argumen yang kita inputkan, maka pada bagian ```name="$(echo $* | awk -F "." '{print $1}')"``` berfungsi untuk memisahkan ekstensi file yang kita inputkan pada argumen.
+### Source Code (b)&(c)
 ```console
 hr=`date +"%H"`
 caps=({A..Z})
@@ -48,7 +50,7 @@ title="$(echo "$name" | tr [A-Z] ["$big"-ZA-"$bigmin"] | tr [a-z] ["$small"-za-"
 printf %s ${array[@]::28} $'\n' >> "$title".txt
 ```
 Dan pada bagian (c), kita diminta untuk enkripsi nama file sesuai dengan waktu pembuatan file. variable ```hr``` digunakan untuk mendapatkan nilai dari jam pembuatan file. Kemudian nantinya, akan digunakan sebagai penanda dalam array untuk menentukan batasan dalam enkripsi dan perubahan nama file nya. Variabel ```title``` nantinya akan menyimpan hasil dari enkripsi judul file sesuai waktu pembuatan file tersebut. Pada akhirnya, password random yang digenerate tadinya (sebanyak 28 karakter) akan disimpan ke dalam file yang nama file nya sudah dienkripsi.
-
+### Source Code (d)
 ```console
 #!/bin/bash
 
@@ -99,6 +101,7 @@ done
 cp wget.log wget.log.bak
 ```
 Di nomor 3 ini, kita diminta untuk membuat script dimana kita akan melakukan download gambar dari link yang disediakan. Nantinya, gambar yang duplikat akan dipisahkan dan dipindahkan ke directory yang berbeda.
+### Source Code (a)
 ```console
 #!bin/bash/
 
@@ -110,11 +113,12 @@ wget -a wget.log https://loremflickr.com/320/240/cat -O pdkt_kusuma_$i.jpg
 done
 ```
 Bagian (a) dari soal ini, diminta untuk melakukan download dari link yang disediakan serta membuat nama file dari gambar yang kita donwload tadi sesuai dengan permintaan soal, yaitu "pdkt_kusuma_NO". Dan untuk setiap log messages akan disimpan ke file yang bernama "wget.log".
-
+### Source Code (b)
 ```console
 5 6-24/8 * * 0-5 bash /home/dicki/Praktikum/Praktikum1/Soal3.sh
 ```
 Bagian (b), diminta untuk membuat jadwal unutk menjalankan script pada waktu yang ditentukan. ```5 6-23/8 * * 0-5``` artinya adalah setiap 8 jam mulai dari pukul 6.05 sampai 24.00 setiap harinya dari hari Minggu sampai hari Jumat, ```bash /home/dicki/Praktikum/Praktikum1/Soal3.sh``` akan melakukan script sesuai dengan script yang sudah dibuat dan diletakkan di directory yang sudah diatur.
+### Source Code (c)
 ```console
 grep "Location" wget.log > location.log
 readarray line < location.log
