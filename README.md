@@ -68,7 +68,7 @@ done
 ```
 Pada bagian tersebut, bash script generate random password, dimana akan dilakukan looping untuk mendapatkan alphanumeric yang diinginkan (posisi dari huruf dan angka juga random).
 Kemudian pada bagian (b), diminta untuk membuat judul file sesuai dengan argumen yang kita inputkan, maka pada bagian ```name="$(echo $* | awk -F "." '{print $1}')"``` berfungsi untuk memisahkan ekstensi file yang kita inputkan pada argumen.
-### Source Code (b)&(c)
+### Source Code (b) & (c)
 ```console
 name="$(echo $* | awk -F "." '{print $1}')"
 hr=`date +"%H"`
@@ -81,7 +81,7 @@ smallmin=${nocaps[$hr-1]}
 title="$(echo "$name" | tr [A-Z] ["$big"-ZA-"$bigmin"] | tr [a-z] ["$small"-za-"$smallmin"])"
 printf %s ${array[@]::28} $'\n' >> "$title".txt
 ```
-Dan pada bagian (c), kita diminta untuk enkripsi nama file sesuai dengan waktu pembuatan file. variable ```hr``` digunakan untuk mendapatkan nilai dari jam pembuatan file. Kemudian nantinya, akan digunakan sebagai penanda dalam array untuk menentukan batasan dalam enkripsi dan perubahan nama file nya. Variabel ```title``` nantinya akan menyimpan hasil dari enkripsi judul file sesuai waktu pembuatan file tersebut. Pada akhirnya, password random yang digenerate tadinya (sebanyak 28 karakter) akan disimpan ke dalam file yang nama file nya sudah dienkripsi.
+Dan pada bagian (c), kita diminta untuk enkripsi nama file sesuai dengan waktu pembuatan file. variable `hr` digunakan untuk mendapatkan nilai dari jam pembuatan file. Kemudian nantinya, akan digunakan sebagai penanda dalam array untuk menentukan batasan dalam enkripsi dan perubahan nama file nya. Variabel `title` nantinya akan menyimpan hasil dari enkripsi judul file sesuai waktu pembuatan file tersebut. Pada akhirnya, password random yang digenerate tadinya (sebanyak 28 karakter) akan disimpan ke dalam file yang nama file nya sudah dienkripsi.
 ### Source Code (d)
 ```console
 #!/bin/bash
@@ -97,7 +97,7 @@ smallmin=${nocaps[$hr-1]}
 title="$(echo "$name" | tr ["$big"-ZA-"$bigmin"] [A-Z] | tr ["$small"-za-"$smallmin"] [a-z])"
 mv $1 "$title".txt
 ```
-Terakhir, pada bagian (d) diminta untuk dapat dekripsi nama file yang sudah kita enkripsi tadi. Pada bash script diatas sudah ditampilkan bagaimana proses untuk dekripsi nama file. Sama halnya dengan proses enkripsi, hanya bedanya pada proses pembuatan di variabel ```title``` caesar chiper nya ditukar. Kemudian setelah nama file berhasil didekripsi, namanya di rename dengan hasil dekripsi tersebut.
+Terakhir, pada bagian (d) diminta untuk dapat dekripsi nama file yang sudah kita enkripsi tadi. Pada bash script diatas sudah ditampilkan bagaimana proses untuk dekripsi nama file. Sama halnya dengan proses enkripsi, hanya bedanya pada proses pembuatan di variabel `title` caesar chiper nya ditukar. Kemudian setelah nama file berhasil didekripsi, namanya di rename dengan hasil dekripsi tersebut.
 
 ## Soal 3
 ```console
@@ -144,14 +144,14 @@ do
 wget -a wget.log https://loremflickr.com/320/240/cat -O pdkt_kusuma_$i.jpg
 done
 ```
-Bagian (a) dari soal ini, diminta untuk melakukan download dari link yang disediakan serta membuat nama file dari gambar yang kita donwload tadi sesuai dengan permintaan soal, yaitu "pdkt_kusuma_NO". Dan untuk setiap log messages akan disimpan ke file yang bernama "wget.log".
+Bagian (a) dari soal ini, diminta untuk melakukan download dari link yang disediakan serta membuat nama file dari gambar yang kita donwload tadi sesuai dengan permintaan soal, yaitu **pdkt_kusuma_N**. Dan untuk setiap log messages akan disimpan ke file yang bernama **wget.log**.
 ### Source Code (b)
 ```console
 5 6-24/8 * * 0-5 bash /home/dicki/Praktikum/Praktikum1/Soal3.sh
 ```
-Bagian (b), diminta untuk membuat jadwal unutk menjalankan script pada waktu yang ditentukan. ```5 6-23/8 * * 0-5``` artinya adalah setiap 8 jam mulai dari pukul 6.05 sampai 24.00 setiap harinya dari hari Minggu sampai hari Jumat, ```bash /home/dicki/Praktikum/Praktikum1/Soal3.sh``` akan melakukan script sesuai dengan script yang sudah dibuat dan diletakkan di directory yang sudah diatur.
+Bagian (b), diminta untuk membuat jadwal unutk menjalankan script pada waktu yang ditentukan. `5 6-23/8 * * 0-5` artinya adalah setiap **8** jam mulai dari pukul **6.05** sampai 24.00 setiap harinya dari hari **Minggu sampai hari Jumat**, `bash /home/dicki/Praktikum/Praktikum1/Soal3.sh` akan melakukan script sesuai dengan script yang sudah dibuat dan diletakkan di directory yang sudah diatur.
 ### Source Code (c)
-```
+```console
 grep "Location" wget.log > location.log
 readarray line < location.log
 for ((i=0; i<28; i++))
@@ -174,4 +174,4 @@ mv pdkt_kusuma_"$i".jpg ./kenangan/kenangan_"$i".jpg
 done
 cp wget.log wget.log.bak
 ```
-Dan terakhir bagian (c), diminta untuk memindahkan gambar yang duplikat (jika ada), serta untuk melakukan back-up terhadapa log messages yang sudah disimpan tadi. Digunakan ```grep``` untuk mendapatkan isi dari ```Location``` yang terdapat di dalama log messages. ```Location``` inilah yang digunakan untuk membedakan anatara satu gambar dengan gambar lainnya. Jika ```Location``` dari suatu log messages sama, maka gambar tersebut identik dan nantinya akan dipindahkan ke directory ```duplicate``` dan nama dari file gambar tersebut akan diganti dengan nama ```duplicate_NO```. Sisanya, gambar yang tidak berduplikat ataupun satu dari gambar yang ada duplikatnya akan dipindahkan ke directory ```kenangan``` serta nama dari file gambar tersebut akan diganti dengan nama ```kenangan_NO```. Setelahnya, akan dilakukan back-up terhadap log messages tadi menuju ke file ```wget.log.bak```.
+Dan terakhir bagian (c), diminta untuk memindahkan gambar yang duplikat (jika ada), serta untuk melakukan back-up terhadapa log messages yang sudah disimpan tadi. Digunakan `grep` untuk mendapatkan isi dari `Location` yang terdapat di dalama log messages. `Location` inilah yang digunakan untuk membedakan anatara satu gambar dengan gambar lainnya. Jika `Location` dari suatu log messages sama, maka gambar tersebut identik dan nantinya akan dipindahkan ke directory `duplicate` dan nama dari file gambar tersebut akan diganti dengan nama `duplicate_NO`. Sisanya, gambar yang tidak berduplikat ataupun satu dari gambar yang ada duplikatnya akan dipindahkan ke directory `kenangan` serta nama dari file gambar tersebut akan diganti dengan nama `kenangan_NO`. Setelahnya, akan dilakukan back-up terhadap log messages tadi menuju ke file `wget.log.bak`.
