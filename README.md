@@ -13,7 +13,7 @@ END{for(i in a ) if (a[i]>0) print a[i], i  }' Sample-Superstore.tsv | sort -g |
 ```
 Pada nomor 1.a, diminta untuk menampilkan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
 sedikit.
-* untuk perintah ```awk -F "\t"``` melakukan separation antar kolum di Sample-SUperstore.tsv, karena pada setiap kolum dibedakan melalui tab (\t)
+* untuk perintah ```awk -F "\t"``` melakukan separation antar kolum di Sample-Superstore.tsv, karena pada setiap kolum dibedakan melalui tab (\t)
 * untuk perintah ```{for(n=21;n<=NF; ++n)a[$13]+=$n}``` akan membuat looping pada kolum keuntungan (profit) agar dapat dijumlah berdasarkan bagian (region) mereka masing"
 * untuk perintah ```END{for(i in a ) if (a[i]>0) print a[i], i  }' Sample-Superstore.tsv | sort -g | head -1``` untuk melakukan print jumlah tiap" bagian (region), lalu di sort mana yang paling sedikit, setelah itu menampilkan 1 region yang paling sedikit profitnya
 
